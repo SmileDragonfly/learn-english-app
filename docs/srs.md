@@ -1,4 +1,12 @@
 # SRS for Learn English App
+<!-- TOC -->
+* [SRS for Learn English App](#srs-for-learn-english-app)
+  * [History](#history)
+  * [Application requirements](#application-requirements)
+  * [Backend requirements](#backend-requirements)
+  * [FrontEnd requiremnts](#frontend-requiremnts)
+  * [UI/UX requirements](#uiux-requirements)
+<!-- TOC -->
 ## History
 |Date|Version|Author|Change Description|
 |----|-------|------|------------------|
@@ -34,6 +42,19 @@
 - Learn Vocalbulary, Grammar and Pronunciation
   - Random mode: easy to hard words
   - Level mode: depend on user level, the words will have same difficult level
+- Translate Vietnamese to English
+  - Word
+  - Phrase
+  - Sentence
+  - Paragraph
+## Backend requirements
+1. Technology stack
+2. Business logic
+## FrontEnd requiremnts
+1. Technology stack
+2. Business logic
+## UI/UX requirements
+
 
 
 
