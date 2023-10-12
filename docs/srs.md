@@ -15,10 +15,7 @@
 ## Application requirements
 1. User
 - Signup
-  - Use phone number
-    - Send OTP => verify OTP => create password => update password
-  - Use email
-    - Send OTP to email => verify OTP => create password => update password
+  - Enter: username(unique) + password(strength enough) => server ok
   - Optional: Use OAuth2
     - TODO
 - Login
@@ -27,7 +24,9 @@
 - Logout
   - User click on button logout => logout and back to log in screen
 - Profile
-  - Name, phone, email, nation
+  - Add name, phone, email, nation
+  - Verify email, phone (to reset password if forget)
+- Reset password
 - User level
   - User will have english level evaluated by their learning process
     - Vocabulary level
@@ -39,7 +38,7 @@
   - Pronunciation history
   - Learning history by datetime (in a day => show what user have learned)
 2. Features
-- Learn Vocalbulary, Grammar and Pronunciation
+- Learn Vocabulary, Grammar and Pronunciation
   - Random mode: easy to hard words
   - Level mode: depend on user level, the words will have same difficult level
 - Translate Vietnamese to English

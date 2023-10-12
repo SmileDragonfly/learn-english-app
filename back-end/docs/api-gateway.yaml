@@ -1,0 +1,173 @@
+openapi: 3.0.0
+info:
+  title: API gateway
+  description: API gateway
+  version: 1.0.0
+servers:
+  - url: 'https://{{environment}.en4you.vn/api/{apiVer}}'
+    variables:
+      environment:
+        default: dev
+      apiVer:
+        default: v1
+components:
+  schemas:
+    sch_resp_status:
+      type: object
+      properties:
+        code:
+          type: string
+        code_type:
+          type: string
+        code_desc:
+          type: string
+        text_disp:
+          type: string
+  parameters:
+    param_device_id:
+      name: device_id
+      description: unique identifier of device
+      in: path
+      required: true
+      schema:
+        type: string
+    param_user_id:
+      name: user_id
+      description: unique identifier of user
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    resp_http_error:
+      description: http error response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              status_desc:
+                type: string
+              error_desc:
+                type: string
+    resp_http_ok:
+      description: http 200, operation status depend on detail message
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: "#/components/schemas/sch_resp_status"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: Bearer
+paths:
+  /devices/{device_id}/signup:
+    summary: signup
+    parameters:
+      - $ref: "#/components/parameters/param_device_id"
+    post:
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+                password:
+                  type: string
+      responses:
+        default:
+          $ref: "#/components/responses/resp_http_error"
+        200:
+          $ref: "#/components/responses/resp_http_ok"
+  /devices/{device_id}/login:
+    summary: login
+    parameters:
+      - $ref: "#/components/parameters/param_device_id"
+    post:
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                  type: string
+                password:
+                  type: string
+      responses:
+        default:
+          $ref: "#/components/responses/resp_http_error"
+        200:
+          description: http ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    $ref: "#/components/schemas/sch_resp_status"
+                  data:
+                    type: object
+                    properties:
+                      user_id:
+                        type: string
+                      user_name:
+                        type: string
+                      access_token:
+                        type: string
+                      refresh_token:
+                        type: string
+  /devices/{device_id}/users/{user_id}/logout:
+    summary: logout
+    parameters:
+      - $ref: "#/components/parameters/param_device_id"
+      - $ref: "#/components/parameters/param_user_id"
+    post:
+      tags:
+        - users
+      security:
+        - bearerAuth: []
+      responses:
+        default:
+          $ref: "#/components/responses/resp_http_error"
+        200:
+          $ref: "#/components/responses/resp_http_ok"
+  /devices/{device_id}/users/{user_id}/name:
+    summary: update user name
+    parameters:
+      - $ref: "#/components/parameters/param_device_id"
+      - $ref: "#/components/parameters/param_user_id"
+    patch:
+      tags:
+        - users
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        default:
+          $ref: "#/components/responses/resp_http_error"
+        200:
+          $ref: "#/components/responses/resp_http_ok"
+
+
+
+
+  
