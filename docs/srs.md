@@ -110,7 +110,7 @@
     - Each item: Day - Mode - Number of question - Completion time - Score
       - (Score in mode are not exam mode will have gray color)
   - History detail screen (after click on an item in list)
-    - Result after complete the lession => [Result screen](#result-screen)
+    - Result after complete the lession => [Result screen](#25-result-screen)
 ## UI/UX requirements
 
 
